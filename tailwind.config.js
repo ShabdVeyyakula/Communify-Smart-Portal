@@ -11,7 +11,10 @@ module.exports = {
     },
     extend: {
       colors: {
-        'background-gray': '#F6F6F6'
+        'background-gray': '#F6F6F6',
+        'communify-green': '#17A9A8',
+        'communify-black': '#333244',
+        'text-light': '#9F9F9F',
       },
       height: {
         mainContent: 'calc(100vh-100px)'

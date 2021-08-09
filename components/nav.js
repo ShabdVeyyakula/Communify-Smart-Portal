@@ -5,18 +5,15 @@ import { useRouter } from 'next/router'
 import profImg from '../public/prof.jpg'
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faTachometerAlt, faBullseye, faCubes, faCalendar, faSignOutAlt } from '@fortawesome/free-solid-svg-icons'
+import { faCity, faSignOutAlt } from '@fortawesome/free-solid-svg-icons'
 
 const Navigation = (props) => {
   return (
     <div className='h-screen flex flex-col' >
       <TopBar />
-      {/* grow to remaining height and width */}
       <div className='flex flex-grow' >
         <SideBar />
-        <div className='flex flex-grow' >
-          {props.children}
-        </div>
+        <PageContent content={props.children} />
       </div>
     </div>
   )
@@ -24,19 +21,51 @@ const Navigation = (props) => {
 
 const TopBar = () => {
   return (
-    <div className='p-6 bg-blue-400' >
-      Top Bar
+    <div className='flex items-center bg-communify-green  ' >
+      <div className='w-44 py-6 flex justify-center items-center border-b border-r border-white' >
+        <FontAwesomeIcon icon={faCity} className='text-white text-xl' />
+        <h1 className='ml-3 text-white font-semibold' >Communify</h1>
+      </div>
+      <TopBarLink name='About us' href='#' />
+      <TopBarLink name='Help' href='#' />
+      <TopBarLink name='Legal' href='#' />
+      <Profile />
+    </div >
+  )
+}
+
+const TopBarLink = ({ name, href }) => {
+  return (
+    <Link href={href}><a className='text-white ml-6'  >{name}</a></Link>
+  )
+}
+
+const Profile = () => {
+  return (
+    <>
+      <div className='ml-auto h-9 w-9 rounded-full bg-gray-400' ></div>
+      <p className='ml-3 text-white' >Shabd Veyyakula</p>
+      <FontAwesomeIcon icon={faSignOutAlt} className='ml-4 mr-5 text-gray-300' />
+    </>
+  )
+}
+
+
+const SideBar = () => {
+  return (
+    <div className='bg-communify-black w-44' >SideBar</div>
+  )
+}
+
+const PageContent = ({ content }) => {
+  return (
+    <div className='flex-grow' >
+      {content}
     </div>
   )
 }
 
-const SideBar = () => {
-  return (
-    <div className='w-60 bg-green-400' >
-      Sidebar
-    </div>
-  )
-}
+
 
 const Card = (props) => {
   return (
