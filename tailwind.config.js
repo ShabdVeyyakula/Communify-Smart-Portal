@@ -12,6 +12,9 @@ module.exports = {
     extend: {
       colors: {
         'background-gray': '#F6F6F6'
+      },
+      height: {
+        mainContent: 'calc(100vh-100px)'
       }
     }
   },

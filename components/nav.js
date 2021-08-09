@@ -9,23 +9,31 @@ import { faTachometerAlt, faBullseye, faCubes, faCalendar, faSignOutAlt } from '
 
 const Navigation = (props) => {
   return (
-    <div className='h-screen flex' >
-      <div className='h-full flex flex-col justify-center p-10' style={{ width: '360px' }}>
-        <Card color='bg-gray-100' >
-          <p className='text-gray-600 text-center' >Communify</p>
-        </Card>
-        <Card color='bg-gray-100'>
-          <SidebarLink name='Dashboard' icon={faTachometerAlt} href='/dashboard' />
-          <SidebarLink name='Goals' icon={faBullseye} href='/goals' />
-          <SidebarLink name='Community' icon={faCubes} href='/community' />
-          <SidebarLink name='Calendar' icon={faCalendar} href='/calendar' />
-        </Card>
-        <Card color='bg-gray-100'>
-          <ProfileLink />
-          <SidebarLink name='Sign Out' icon={faSignOutAlt} href='/' />
-        </Card>
+    <div className='h-screen flex flex-col' >
+      <TopBar />
+      {/* grow to remaining height and width */}
+      <div className='flex flex-grow' >
+        <SideBar />
+        <div className='flex flex-grow' >
+          {props.children}
+        </div>
       </div>
-      {props.children}
+    </div>
+  )
+}
+
+const TopBar = () => {
+  return (
+    <div className='p-6 bg-blue-400' >
+      Top Bar
+    </div>
+  )
+}
+
+const SideBar = () => {
+  return (
+    <div className='w-60 bg-green-400' >
+      Sidebar
     </div>
   )
 }
