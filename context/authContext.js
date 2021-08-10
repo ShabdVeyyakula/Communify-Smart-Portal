@@ -1,9 +1,12 @@
 import React, { useState, useEffect, usecontext } from 'react'
-import { AuthService } from '../services/AuthService'
+
+import firebase from 'firebase/app'
+import 'firebase/auth'
 
 const AuthContext = React.createContext({
   user: null,
   error: '',
+  loading: true,
   login: async (email, password) => { },
   logout: async () => { },
 })
@@ -11,23 +14,35 @@ const AuthContext = React.createContext({
 export const AuthContextProvider = (props) => {
   const [user, setUser] = useState(null)
   const [error, setError] = useState('')
+  const [loading, setLoading] = useState(true)
+
+  useEffect(() => {
+    firebase.auth().onAuthStateChanged(user => {
+      setUser(user)
+      setLoading(false)
+      console.log('auth state changed', user)
+    })
+  }, [])
 
   const login = async (email, password) => {
-    const { user, error } = await AuthService.login() // returns either user or error
-    setUser(user ?? null)
-    setError(error ?? '')
+    try {
+      const userCredential = await firebase.auth().signInWithEmailAndPassword(email, password)
+      const user = userCredential.user
+      setError('')
+    } catch (e) {
+      setError(e.message)
+    }
   }
 
   const logout = async () => {
-    await AuthService.logout()
-    setUser(null)
-    setError('')
+    await firebase.auth.signOut()
   }
 
   return <AuthContext.Provider
     value={{
       user,
       error,
+      loading,
       login,
       logout
     }}>

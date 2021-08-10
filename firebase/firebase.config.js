@@ -1,12 +1,12 @@
 import firebase from 'firebase/app'
 
 const firebaseConfig = {
-  apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
-  authDomain: process.env.NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN,
-  projectId: process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID,
-  storageBucket: process.env.NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET,
-  messagingSenderId: process.env.NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID,
-  appId: process.env.NEXT_PUBLIC_FIREBASE_APP_ID
+  apiKey: "AIzaSyCyJHj6Qfe7KMHCOTXHENJzPVBtZhBqGTo",
+  authDomain: "communify-9f8ea.firebaseapp.com",
+  projectId: "communify-9f8ea",
+  storageBucket: "communify-9f8ea.appspot.com",
+  messagingSenderId: "315887193204",
+  appId: "1:315887193204:web:ab2946cb273f6435bc5521"
 };
 
 if (!firebase.apps.length) {
