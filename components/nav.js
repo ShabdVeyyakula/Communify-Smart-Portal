@@ -5,7 +5,7 @@ import { useRouter } from 'next/router'
 import profImg from '../public/prof.jpg'
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faCity, faSignOutAlt } from '@fortawesome/free-solid-svg-icons'
+import { faCity, faClipboard, faBullseye, faCalendar, faArrowAltCircleRight, faSignOutAlt } from '@fortawesome/free-solid-svg-icons'
 
 const Navigation = (props) => {
   return (
@@ -22,9 +22,9 @@ const Navigation = (props) => {
 const TopBar = () => {
   return (
     <div className='flex items-center bg-communify-green  ' >
-      <div className='w-44 py-6 flex justify-center items-center border-b border-r border-white' >
+      <div className='w-48 py-6 flex justify-center items-center border-b border-r border-white' >
         <FontAwesomeIcon icon={faCity} className='text-white text-xl' />
-        <h1 className='ml-3 text-white font-semibold' >Communify</h1>
+        <h1 className='ml-3 text-white font-semibold text-lg' >Communify</h1>
       </div>
       <TopBarLink name='About us' href='#' />
       <TopBarLink name='Help' href='#' />
@@ -53,7 +53,33 @@ const Profile = () => {
 
 const SideBar = () => {
   return (
-    <div className='bg-communify-black w-44' >SideBar</div>
+    <div className='bg-communify-black w-48 flex flex-col justify-between' >
+      <div className='mt-5' >
+        <SidebarLink name='Dashboard' href='/dashboard' icon={faCity} />
+        <SidebarLink name='Goals' href='/goals' icon={faBullseye} />
+        <SidebarLink name='Propose Goal' href='/propose-goal' icon={faArrowAltCircleRight} />
+        <SidebarLink name='Propose Event' href='/propose-event' icon={faCalendar} />
+      </div>
+      <button className='mb-5 mx-5 px-2 py-2 text-sm rounded-lg text-white bg-communify-green hover:bg-communify-green-alt transition ease-in duration-100' >
+        <FontAwesomeIcon icon={faClipboard} className='mr-2' />
+        Survey Availiable
+      </button>
+    </div>
+  )
+}
+
+const SidebarLink = ({ name, href, icon }) => {
+  const router = useRouter()
+
+  const colorClasses = href === router.pathname ? 'text-communify-green' : 'text-white group-hover:text-communify-green'
+
+  return (
+    <Link href={href} passHref>
+      <div className={'group mx-7 cursor-pointer mb-5'} >
+        <FontAwesomeIcon icon={icon} className={'mr-4 transition ease-in duration-100 ' + colorClasses} />
+        <a className={'transition ease-in duration-100 text-sm ' + colorClasses} >{name}</a>
+      </div>
+    </Link>
   )
 }
 
@@ -62,42 +88,6 @@ const PageContent = ({ content }) => {
     <div className='flex-grow' >
       {content}
     </div>
-  )
-}
-
-
-
-const Card = (props) => {
-  return (
-    <div className={'p-4 mb-5 rounded-lg ' + props.color} >{props.children}</div>
-  )
-}
-
-const SidebarLink = (props) => {
-  const router = useRouter()
-
-  const colorClasses = props.href === router.pathname ? 'text-yellow-500' : 'text-gray-600 group-hover:text-yellow-500'
-  const paddingClasses = props.name === 'Sign Out' ? 'mb-0' : 'mb-5'
-
-  return (
-    <Link href={props.href} passHref>
-      <div className={'group mx-7 cursor-pointer ' + paddingClasses} >
-        <FontAwesomeIcon icon={props.icon} className={'mr-4 transition ease-in duration-100 ' + colorClasses} />
-        <a className={'transition ease-in duration-100 ' + colorClasses} >{props.name}</a>
-      </div>
-    </Link>
-  )
-}
-
-const ProfileLink = (props) => {
-  return (
-    <Link href='' passHref>
-      <div className='group flex items-center mx-7 mb-5 cursor-pointer' >
-        {/* <FontAwesomeIcon icon={props.icon} className={'mr-4 transition ease-in duration-100 ' + colorClasses} /> */}
-        <Image src={profImg} alt="Pic" />
-        <a className='transition text-gray-600 hover:text-yellow-500 ease-in duration-100' >Shabd V</a>
-      </div>
-    </Link>
   )
 }
 
