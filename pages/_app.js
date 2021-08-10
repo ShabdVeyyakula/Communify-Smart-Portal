@@ -1,11 +1,13 @@
-// pages/_app.js
 import '../styles/globals.css'
-import initFirebase from '../firebase/initFirebase'
-
-initFirebase()
+import "../firebase/firebase.config"; // initialize firebase
+import { AuthContextProvider } from '../context/authContext'
 
 function MyApp({ Component, pageProps }) {
-  return <Component {...pageProps} />
+  return (
+    <AuthContextProvider>
+      <Component {...pageProps} />
+    </AuthContextProvider>
+  )
 }
 
 export default MyApp

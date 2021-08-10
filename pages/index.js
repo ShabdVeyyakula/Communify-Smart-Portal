@@ -55,7 +55,7 @@ const HomeContent = () => {
   return (
     <div className='w-full h-3/4 flex flex-col justify-center items-center my-auto' >
       <h1 className='text-7xl text-communify-green mb-9 '>Communify</h1>
-      <p className='text-lg text-center text-gray-800 mb-9' >The smartest way to farm<br />dark energy crystals.</p>
+      <p className='text-lg text-center text-gray-800 mb-9' >The best way to connect<br />with your community.</p>
       <div>
         <button className=' border-2 border-communify-green text-communify-green hover:bg-communify-green-alt hover:border-communify-green-alt hover:text-white px-8 py-3 rounded-lg transition ease-in duration-100 focus:outline-none mr-4' >Learn More</button>
         <button className='border-2 border-communify-green bg-communify-green text-white hover:bg-communify-green-alt hover:border-communify-green-alt px-8 py-3 rounded-lg transition ease-in duration-100 focus:outline-none' >Get Started</button>

@@ -1,10 +1,12 @@
-import React from 'react'
+import React, { useContext } from 'react'
+import AuthContext from '../context/authContext'
 import { useRouter } from 'next/router'
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faArrowLeft } from '@fortawesome/free-solid-svg-icons'
 
 const Login = () => {
+  const authCtx = useContext(AuthContext)
   const router = useRouter()
 
   const arrowBackHandler = () => {
@@ -20,7 +22,7 @@ const Login = () => {
       <div className='flex flex-col w-96' >
         <p className='text-sm' >&nbsp;</p>
         <h1 className='text-center mb-4 text-3xl font-semibold' >Sign In</h1>
-        <p className='text-center mb-4 text-md' >Don't have an account? <span onClick={navHandler} className='text-communify-green font-semibold cursor-pointer' >Sign up!</span></p>
+        <p className='text-center mb-4 text-md' >Don${'\''}t have an account? <span onClick={navHandler} className='text-communify-green font-semibold cursor-pointer' >Sign up!</span></p>
         <Input placeholder='email' />
         <Input placeholder='password' />
         <Button />
@@ -41,7 +43,7 @@ const Input = (props) => {
   )
 }
 
-const Button = (props) => {
+const Button = () => {
 
   const router = useRouter()
   const btnHandler = () => {
