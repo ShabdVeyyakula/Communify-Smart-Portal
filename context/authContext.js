@@ -1,7 +1,8 @@
-import React, { useState, useEffect, usecontext } from 'react'
+import React, { useState, useEffect } from 'react'
 
 import firebase from 'firebase/app'
 import 'firebase/auth'
+import router from 'next/router'
 
 const AuthContext = React.createContext({
   user: null,
@@ -20,7 +21,7 @@ export const AuthContextProvider = (props) => {
     firebase.auth().onAuthStateChanged(user => {
       setUser(user)
       setLoading(false)
-      console.log('auth state changed', user)
+      // console.log('auth state changed', user)
     })
   }, [])
 
@@ -29,6 +30,7 @@ export const AuthContextProvider = (props) => {
       const userCredential = await firebase.auth().signInWithEmailAndPassword(email, password)
       const user = userCredential.user
       setError('')
+      router.push('/dashboard')
     } catch (e) {
       setError(e.message)
     }
@@ -36,6 +38,7 @@ export const AuthContextProvider = (props) => {
 
   const logout = async () => {
     await firebase.auth.signOut()
+    router.push('/')
   }
 
   return <AuthContext.Provider

@@ -1,11 +1,16 @@
 import '../styles/globals.css'
-import "../firebase/firebase.config"; // initialize firebase
+import initFirebase from "../firebase/firebaseInit"; // initialize firebase
 import { AuthContextProvider } from '../context/authContext'
+import ProtectRoute from '../components/protectedRoute'
+
+initFirebase()
 
 function MyApp({ Component, pageProps }) {
   return (
     <AuthContextProvider>
-      <Component {...pageProps} />
+      <ProtectRoute>
+        <Component {...pageProps} />
+      </ProtectRoute>
     </AuthContextProvider>
   )
 }
