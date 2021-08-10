@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 
 import firebase from 'firebase/app'
 import 'firebase/auth'
-import router from 'next/router'
+import { useRouter } from 'next/router'
 
 const AuthContext = React.createContext({
   user: null,
@@ -16,6 +16,7 @@ export const AuthContextProvider = (props) => {
   const [user, setUser] = useState(null)
   const [error, setError] = useState('')
   const [loading, setLoading] = useState(true)
+  const router = useRouter()
 
   useEffect(() => {
     firebase.auth().onAuthStateChanged(user => {
