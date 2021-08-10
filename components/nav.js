@@ -1,8 +1,9 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import { useRouter } from 'next/router'
 import profImg from '../public/prof.jpg'
+import AuthContext from '../context/authContext'
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCity, faClipboard, faBullseye, faCalendar, faArrowAltCircleRight, faSignOutAlt } from '@fortawesome/free-solid-svg-icons'
@@ -41,11 +42,20 @@ const TopBarLink = ({ name, href }) => {
 }
 
 const Profile = () => {
+  const ctx = useContext(AuthContext)
+
+  const logoutHandler = async () => {
+    await ctx.logout()
+  }
+
+
   return (
     <>
       <div className='ml-auto h-9 w-9 rounded-full bg-gray-400' ></div>
       <p className='ml-3 text-white' >Shabd Veyyakula</p>
-      <FontAwesomeIcon icon={faSignOutAlt} className='ml-4 mr-5 text-gray-300' />
+      <button onClick={logoutHandler} className='flex items-center justify-center'>
+        <FontAwesomeIcon icon={faSignOutAlt} className='ml-4 mr-5 text-gray-300' />
+      </button>
     </>
   )
 }
