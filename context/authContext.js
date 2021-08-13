@@ -39,7 +39,6 @@ export const AuthContextProvider = (props) => {
 
   const logout = async () => {
     await firebase.auth().signOut()
-    // router.push('/')
   }
 
   return <AuthContext.Provider
