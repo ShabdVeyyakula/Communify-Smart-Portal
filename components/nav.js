@@ -95,9 +95,9 @@ const SidebarLink = ({ name, href, icon }) => {
 
 const PageContent = ({ content }) => {
   return (
-    <div className='flex flex-grow bg-green-400' >
+    <>
       {content}
-    </div>
+    </>
   )
 }
 

@@ -14,7 +14,7 @@ const Dashboard = () => {
 
   return (
     <Navigation>
-      <div className="flex justify-center items-center">
+      <div className="flex-grow flex flex-column justify-center items-top">
         Test
         <button onClick={getVal}>get val</button>
       </div>
