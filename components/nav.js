@@ -23,7 +23,7 @@ const Navigation = (props) => {
 const TopBar = () => {
   return (
     <div className='flex items-center bg-communify-green  ' >
-      <div className='w-48 py-6 flex justify-center items-center border-b border-r border-white' >
+      <div className='w-48 py-6 flex justify-center items-center border-background-gray' style={{ borderTop: 'none', borderLeft: 'none', borderWidth: '0.5px' }} >
         <FontAwesomeIcon icon={faCity} className='text-white text-xl' />
         <h1 className='ml-3 text-white font-semibold text-lg' >Communify</h1>
       </div>
@@ -95,7 +95,7 @@ const SidebarLink = ({ name, href, icon }) => {
 
 const PageContent = ({ content }) => {
   return (
-    <div className='flex-grow' >
+    <div className='flex flex-grow bg-green-400' >
       {content}
     </div>
   )
