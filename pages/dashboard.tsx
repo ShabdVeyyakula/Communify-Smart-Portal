@@ -22,8 +22,9 @@ const Dashboard = () => {
   )
 }
 
-const Goal = () => {
-  return <div>test</div>
+const GoalList = (params) => {
+  
 }
+
 
 export default Dashboard
